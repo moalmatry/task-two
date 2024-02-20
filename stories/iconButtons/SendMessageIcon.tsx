@@ -1,5 +1,5 @@
-import SendMessage from '../../components/icons/SVG';
 import React from 'react';
+import SendMessage from '../../components/icons/SVG';
 
 interface Props {
   size: number;

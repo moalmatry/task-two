@@ -1,9 +1,9 @@
-export const getPost = async () => {
+export const getPost = async (postId: string) => {
   try {
     const response = await fetch(
-      'https://api1.ayyam.net/v2/mobile_apis/posts_apis/posts-list.php?single_post_id=5001',
+      `https://api1.ayyam.net/v2/mobile_apis/posts_apis/posts-list.php?single_post_id=${postId}`,
       {
-        method: 'GET',
+        method: "GET",
       }
     );
 

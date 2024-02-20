@@ -2,18 +2,15 @@ import React from 'react';
 import SendMessageIcon from '../iconButtons/SendMessageIcon';
 import ProfileImage from '../Images/ProfileImage';
 import FollowButton from '../Buttons/FollowButton';
-import MoreIcon from '../iconButtons/MoreIcon';
-import MuteIcon from '../iconButtons/MuteIcon';
 import LottieIconsBox from '../iconButtons/LottieIconsBox';
 import RegularButton from '../Buttons/RegularButton';
-import { BiLike } from 'react-icons/bi';
 import SVG from '../../components/icons/SVG';
 import { IoIosMore } from 'react-icons/io';
-import { getPost } from '../../services/getPost';
-import { Data, RootObject } from '../../services/types';
+import { Data } from '../../services/types';
 import Image from 'next/image';
 import img from '../../Assets/3760_1701057173_17276.jpg';
-import VideoPlayer from '../Video/VideoPlayer';
+import FloatingLottieContainer from './FloatingLottieContainer';
+import dynamic from 'next/dynamic';
 
 interface Props {
   content: 'image' | 'video';
@@ -21,7 +18,9 @@ interface Props {
 }
 
 const PostContainer = ({ content, data }: Props) => {
-  // console.log(data.list.post_content);
+  // to fix video hydration issues
+  const NoSSR = dynamic(() => import('../Video/VideoPlayer'), { ssr: false });
+
   return (
     <div className="border-b-[0.5px min-h-[730px] w-full border-t-[0.5px] border-gray-500 sm:w-[466px]">
       {content === 'image' && (
@@ -46,20 +45,30 @@ const PostContainer = ({ content, data }: Props) => {
       )}
       {
         <div className="relative h-[585px] w-full border border-gray-500">
-          {content === 'image' && <Image src={img} alt="test" fill />}
+          {content === 'image' && (
+            <Image
+              src={`https://cdn1.ayyam.net/imgs/md/${data?.list.image?.name}`}
+              alt="test"
+              fill
+            />
+          )}
           {content === 'video' && (
             <>
-              <VideoPlayer />
+              {/* Video element after disabling SSR */}
+              <NoSSR />
 
               <div className="absolute bottom-24 left-3">
                 <SendMessageIcon size={24} />
               </div>
               <div className="absolute bottom-2 flex w-full justify-between px-4">
                 <div className="flex items-center gap-2">
-                  <ProfileImage />
+                  <ProfileImage
+                    hasStory={true}
+                    src={`https://cdn1.ayyam.net/imgs/md/${data?.list.user_profile_pic}`}
+                  />
                   <div>
                     <p className="text-sm font-bold">{data?.list.user_name}</p>
-                    <p className="text-xs">20</p>
+                    <p className="text-xs">{data?.list.video?.views_count}</p>
                   </div>
                 </div>
                 <FollowButton />
@@ -72,11 +81,8 @@ const PostContainer = ({ content, data }: Props) => {
         <div>
           <LottieIconsBox reactions={data?.list?.post_reactions} />
         </div>
-        <div className="flex items-center gap-4">
-          <RegularButton
-            counter={data?.list.post_reactions.total_count}
-            icon={<BiLike size={24} />}
-          />
+        <div className="flex items-center gap-4 relative">
+          <FloatingLottieContainer />
           <RegularButton
             comments={data?.list.comments_count}
             counter={20}

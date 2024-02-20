@@ -1,22 +1,22 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
   size: number;
   className?: string;
   name?:
-    | 'send'
-    | 'comment'
-    | 'comments'
-    | 'heart'
-    | 'repost-white'
-    | 'repost'
-    | 'send-outline';
+    | "send"
+    | "comment"
+    | "comments"
+    | "heart"
+    | "repost-white"
+    | "repost"
+    | "send-outline";
 }
 
-const SVG = ({ size, className, name = 'send' }: Props) => {
+const SVG = ({ size, className, name = "send" }: Props) => {
   return (
     <>
-      {name === 'send-outline' && (
+      {name === "send-outline" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 32 32"
@@ -32,7 +32,7 @@ const SVG = ({ size, className, name = 'send' }: Props) => {
           ></path>
         </svg>
       )}
-      {name === 'repost' && (
+      {name === "repost" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           data-name="Layer 1"
@@ -48,7 +48,7 @@ const SVG = ({ size, className, name = 'send' }: Props) => {
           ></path>
         </svg>
       )}
-      {name === 'repost-white' && (
+      {name === "repost-white" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           data-name="1-repost"
@@ -69,7 +69,7 @@ const SVG = ({ size, className, name = 'send' }: Props) => {
           ></path>
         </svg>
       )}
-      {name === 'heart' && (
+      {name === "heart" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -85,13 +85,13 @@ const SVG = ({ size, className, name = 'send' }: Props) => {
           ></path>
         </svg>
       )}
-      {name === 'comments' && (
+      {name === "comments" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill-rule="evenodd"
-          stroke-linejoin="round"
-          stroke-miterlimit="2"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          strokeLinejoin="round"
+          strokeMiterlimit="2"
+          clipRule="evenodd"
           viewBox="0 0 24 24"
           id="Comments"
           width={size}
@@ -104,7 +104,7 @@ const SVG = ({ size, className, name = 'send' }: Props) => {
           ></path>
         </svg>
       )}
-      {name === 'comment' && (
+      {name === "comment" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -119,7 +119,7 @@ const SVG = ({ size, className, name = 'send' }: Props) => {
           ></path>
         </svg>
       )}
-      {name === 'send' && (
+      {name === "send" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

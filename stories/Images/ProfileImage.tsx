@@ -8,13 +8,15 @@ interface Props {
   hasStory?: boolean;
 }
 
-const ProfileImage = ({ size = 10, src = image, hasStory = false }: Props) => {
+const ProfileImage = ({ size, src = image, hasStory = false }: Props) => {
   return (
     <div
       // w-${size} h-${size}
-      className={`w-10 h-10 flex overflow-hidden rounded-full relative cursor-pointer border-white ${
-        hasStory && 'border-2'
-      }`}
+      className={`${
+        size ? ` w-${size} h-${size} ` : ' w-10 h-10 '
+      } flex overflow-hidden rounded-full relative cursor-pointer border-white ${
+        hasStory && 'border-2 p-2 '
+      } `}
     >
       <Image src={src} alt="profile pic" className="w-full" fill />
     </div>
