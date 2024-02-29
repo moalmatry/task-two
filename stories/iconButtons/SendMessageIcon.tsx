@@ -1,5 +1,5 @@
-import React from 'react';
-import SendMessage from '../../components/icons/SVG';
+import React from "react";
+import SendMessage from "../icons/SVG";
 
 interface Props {
   size: number;
@@ -7,7 +7,7 @@ interface Props {
 
 const SendMessageIcon = ({ size }: Props) => {
   return (
-    <div className="flex group cursor-pointer items-center p justify-center rounded-full border hover:border-gray-500 border-gray-100 p-2">
+    <div className="p group flex cursor-pointer items-center justify-center rounded-full border border-gray-100 p-2 hover:border-gray-500">
       <SendMessage
         name="send"
         className="opacity-100 group-hover:opacity-50"

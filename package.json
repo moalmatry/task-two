@@ -13,6 +13,7 @@
   "dependencies": {
     "lottie-react": "^2.4.0",
     "next": "14.1.0",
+    "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
@@ -40,6 +41,8 @@
     "eslint-plugin-storybook": "^0.6.15",
     "postcss": "^8",
     "postcss-loader": "^8.1.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "storybook": "^7.6.16",
     "style-loader": "^3.3.4",
     "tailwindcss": "^3.3.0",

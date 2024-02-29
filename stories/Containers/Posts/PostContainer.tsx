@@ -1,30 +1,32 @@
-import React from 'react';
-import SendMessageIcon from '../iconButtons/SendMessageIcon';
-import ProfileImage from '../Images/ProfileImage';
-import FollowButton from '../Buttons/FollowButton';
-import LottieIconsBox from '../iconButtons/LottieIconsBox';
-import RegularButton from '../Buttons/RegularButton';
-import SVG from '../../components/icons/SVG';
-import { IoIosMore } from 'react-icons/io';
-import { Data } from '../../services/types';
-import Image from 'next/image';
-import img from '../../Assets/3760_1701057173_17276.jpg';
-import FloatingLottieContainer from './FloatingLottieContainer';
-import dynamic from 'next/dynamic';
+import React from "react";
+import SendMessageIcon from "../../iconButtons/SendMessageIcon";
+import ProfileImage from "../../Images/ProfileImage";
+import FollowButton from "../../Buttons/FollowButton";
+import LottieIconsBox from "../../iconButtons/LottieIconsBox";
+import RegularButton from "../../Buttons/RegularButton";
+import SVG from "../../icons/SVG";
+import { IoIosMore } from "react-icons/io";
+import { Data } from "../../../services/types";
+import Image from "next/image";
+import img from "../../Assets/3760_1701057173_17276.jpg";
+import FloatingLottieContainer from "./FloatingLottieContainer";
+import dynamic from "next/dynamic";
 
 interface Props {
-  content: 'image' | 'video';
+  content: "image" | "video";
   data?: Data;
 }
 
 const PostContainer = ({ content, data }: Props) => {
   // to fix video hydration issues
-  const NoSSR = dynamic(() => import('../Video/VideoPlayer'), { ssr: false });
+  const NoSSR = dynamic(() => import("../../Video/VideoPlayer"), {
+    ssr: false,
+  });
 
   return (
     <div className="border-b-[0.5px min-h-[730px] w-full border-t-[0.5px] border-gray-500 sm:w-[466px]">
-      {content === 'image' && (
-        <div className="flex justify-between my-2 px-4">
+      {content === "image" && (
+        <div className="my-2 flex justify-between px-4">
           <div className="flex items-center gap-2 ">
             <ProfileImage
               hasStory={true}
@@ -45,14 +47,14 @@ const PostContainer = ({ content, data }: Props) => {
       )}
       {
         <div className="relative h-[585px] w-full border border-gray-500">
-          {content === 'image' && (
+          {content === "image" && (
             <Image
               src={`https://cdn1.ayyam.net/imgs/md/${data?.list.image?.name}`}
               alt="test"
               fill
             />
           )}
-          {content === 'video' && (
+          {content === "video" && (
             <>
               {/* Video element after disabling SSR */}
               <NoSSR />
@@ -77,11 +79,11 @@ const PostContainer = ({ content, data }: Props) => {
           )}
         </div>
       }
-      <div className="flex justify-between px-2 my-2">
+      <div className="my-2 flex justify-between px-2">
         <div>
           <LottieIconsBox reactions={data?.list?.post_reactions} />
         </div>
-        <div className="flex items-center gap-4 relative">
+        <div className="relative flex items-center gap-4">
           <FloatingLottieContainer />
           <RegularButton
             comments={data?.list.comments_count}
